@@ -155,6 +155,7 @@ export default {
           }
           
         } else if (i.price < this.coin) {
+           this.change = this.coin;
           this.change = this.coin - i.price;
           this.warning = "Thank you";
           var usechange2 = this.change;
@@ -169,39 +170,20 @@ export default {
          
         }
       } else if (i.in_stock == false) {
+        this.change = this.coin
         var index2 = 0;
         this.warning = "Goods is run out of stock";
-        if (i.price < this.coin) {
-           this.change = this.coin - i.price;
             var usechange3 = this.change;
-          while ( usechange3 > 0) {
-          if (usechange3 >= this.denominations[index2]) {
-            this.allcoin[index2]++;
-            usechange3 -= this.denominations[index2];
-          } else {
-            index2++;
+    while (usechange3 > 0) {
+            if (usechange3 >= this.denominations[index2]) {
+              this.allcoin[index2]++;
+              usechange3 -= this.denominations[index2];
+            } else {
+              index2++;
+            }
           }
-        }
-          this.change = this.coin - i.price;
-        }else if (i.price == this.coin) {
-          this.change = 0;
-        }else if (i.price > this.coin) {
-         var usechange4 = this.change;
-          this.change = this.coin;
-          while ( usechange4 > 0) {
-          if (usechange4 >= this.denominations[index2]) {
-            this.allcoin[index2]++;
-            usechange4 -= this.denominations[index2];
-          } else {
-            index2++;
-          }
-        }
-        }
-         
-       
-       
-        
-      }
+      
+    }
     },
     cancel() {
       (this.coin = 0),
